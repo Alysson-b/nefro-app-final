@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>testegdngdnstestes
+    </title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="back-button">
+                <img src="assets/arrow_back.png" class="back-arrow">
+            </div>
+            <h1>Fazer teste</h1>
+
+        </header>
+
+        <!-- Test Info -->
+        <section class="test-info">
+            <div class="test-header">
+                <img src="assets/image.png" alt="Teste 1" id="testImage">
+                <i class="material-icons" id="edit-icon-img">edit</i>
+                <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                <div class="test-details">
+                    <span id="nome-teste" contenteditable="false">Teste 1</span>
+                        <i class="material-icons" id="edit-icon">edit</i>
+                    <textarea placeholder="Descrição..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <div class="search-bar">
+            <div class="input-container">
+                <select id="tagSelect" class="input-tag">
+                    <option value="">Selecione uma Tag</option>
+                    <option value="DRC">DRC</option>
+                    <option value="Nefrologia Clínica">Nefrologia Clínica</option>
+                    <option value="Neoplasia e doença cística">Neoplasia e doença cística</option>
+                </select>
+                <input type="number" id="questionCount" min="1" placeholder="Qtde questões">
+            </div>
+            <button id="generateQuestionsBtn">Gerar Questões</button>
+        </div>
+
+        <!-- Question List -->
+        <section class="question-list">
+            <div class="question-item">
+                <div class="question-data">
+                <input type="checkbox" class="custom-checkbox">
+                <div class="question-info">
+                    <h3 class="question-title">Nefrologia Clínica</h3>
+                    <p>6 questões</p>
+                </div>
+                </div>
+            </div>
+            
+
+            <div class="question-item">
+                <div class="question-data">
+                <input type="checkbox" class="custom-checkbox">
+                <div class="question-info">
+                    <h3 class="question-title">Diálise Peritoneal</h3>
+                    <p>2 questões</p>
+                </div>
+                    </div>
+                </div>
+
+                <div class="question-item">
+                    <div class="question-data">
+                        <input type="checkbox" class="custom-checkbox">
+                        <div class="question-info">
+                            <h3 class="question-title">DRC</h3>
+                            <p>12 questões</p>
+                        </div>
+                    </div>
+                </div>
+
+                    
+
+        </section>
+
+        <!-- Save and Tests Buttons -->
+         <div class="question-buttons">
+        <button class="save-button">Salvar</button>
+        <button class="tests-button"><i class="fa-regular fa-file"></i>
+            Teste
+        </button>
+    </div>
+
+    </div>
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+            <h2>Questões Selecionadas</h2>
+            <section class="question-list">
+                <div class="question-item">
+                    <div class="question-data">
+                    <input type="checkbox" class="custom-checkbox">
+                    <div class="question-info">
+                        <h3>Questão 1</h3>
+                        <p>50% de acerto</p>
+                    </div>
+                        <div class="rating">
+                            <i class="material-icons" id="star-icon">star</i>
+                            <i class="material-icons" id="star-icon">star</i>
+                            <i class="material-icons" id="star-icon">star</i>
+                            <i class="material-icons" id="star-icon-none">star</i>
+                            <i class="material-icons" id="star-icon-none">star</i>
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <div class="question-item">
+                    <div class="question-data">
+                    <input type="checkbox" class="custom-checkbox">
+                    <div class="question-info">
+                        <h3>Questão 2</h3>
+                        <p>80% de acerto</p>
+                    </div>
+                    <div class="rating">
+                        <i class="material-icons" id="star-icon">star</i>
+                        <i class="material-icons" id="star-icon">star</i>
+                        <i class="material-icons" id="star-icon">star</i>
+                        <i class="material-icons" id="star-icon-none">star</i>
+                        <i class="material-icons" id="star-icon-none">star</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="integracao.js"></script>
+    
+</body>
+</html>
+

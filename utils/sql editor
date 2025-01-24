@@ -1,0 +1,366 @@
+-- Tabela de Usuários
+create table public.usuarios (
+    id uuid primary key default uuid_generate_v4(),
+    nome text not null,
+    email text unique not null,
+    senha text not null,
+    criado_em timestamp default current_timestamp,
+    nivel_acesso text check (nivel_acesso in ('admin', 'usuario')) not null
+);
+
+-- Tabela de Cursos
+create table public.cursos (
+    id uuid primary key default uuid_generate_v4(),
+    titulo text not null,
+    descricao text,
+    criado_por uuid references public.usuarios(id),
+    criado_em timestamp default current_timestamp
+);
+
+ALTER TABLE public.cursos
+ADD COLUMN modulo text;
+
+
+-- Tabela de Provas
+create table public.provas (
+    id uuid primary key default uuid_generate_v4(),
+    id_curso uuid references public.cursos(id),
+    modulo text not null,
+    titulo text not null,
+    descricao text,
+    criado_por uuid references public.usuarios(id),
+    criado_em timestamp default current_timestamp
+);
+
+-- Tabela de Questões
+create table public.questoes (
+    id uuid primary key default uuid_generate_v4(),
+    id_prova uuid references public.provas(id),
+    pergunta text not null,
+    opcao_a text,
+    opcao_b text,
+    opcao_c text,
+    opcao_d text,
+    resposta_correta text not null,
+    respostas_erradas jsonb default '[]',
+    imagem_url text,
+    video_url text,
+    criado_em timestamp default current_timestamp
+);
+
+-- Tabela de Simulados
+create table public.simulados (
+    id uuid primary key default uuid_generate_v4(),
+    titulo text not null,
+    descricao text,
+    modulo text not null,
+    criado_por uuid references public.usuarios(id),
+    criado_em timestamp default current_timestamp
+);
+
+-- Tabela de Associação entre Simulados e Provas
+create table public.simulado_provas (
+    id_simulado uuid references public.simulados(id),
+    id_prova uuid references public.provas(id),
+    primary key (id_simulado, id_prova)
+);
+
+
+-- POLÍTICAS
+
+create policy "Permitir leitura de cursos para usuários autenticados"
+on public.cursos
+as permissive
+for select
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid() 
+    and public.usuarios.nivel_acesso in ('usuario', 'administrador')
+  )
+);
+
+create policy "Permitir inserção de cursos para administradores"
+on public.cursos
+as permissive
+for insert
+to authenticated
+with check (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir atualização de cursos para administradores"
+on public.cursos
+as permissive
+for update
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir exclusão de cursos para administradores"
+on public.cursos
+as permissive
+for delete
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir leitura de provas para usuários autenticados"
+on public.provas
+as permissive
+for select
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso in ('usuario', 'administrador')
+  )
+);
+
+create policy "Permitir inserção de provas para administradores"
+on public.provas
+as permissive
+for insert
+to authenticated
+with check (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir atualização de provas para administradores"
+on public.provas
+as permissive
+for update
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir exclusão de provas para administradores"
+on public.provas
+as permissive
+for delete
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir leitura de questões para usuários autenticados"
+on public.questoes
+as permissive
+for select
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso in ('usuario', 'administrador')
+  )
+);
+
+create policy "Permitir inserção de questões para administradores"
+on public.questoes
+as permissive
+for insert
+to authenticated
+with check (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir atualização de questões para administradores"
+on public.questoes
+as permissive
+for update
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir exclusão de questões para administradores"
+on public.questoes
+as permissive
+for delete
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir leitura de simulados para usuários autenticados"
+on public.simulados
+as permissive
+for select
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso in ('usuario', 'administrador')
+  )
+);
+
+create policy "Permitir inserção de simulados para administradores"
+on public.simulados
+as permissive
+for insert
+to authenticated
+with check (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir atualização de simulados para administradores"
+on public.simulados
+as permissive
+for update
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir exclusão de simulados para administradores"
+on public.simulados
+as permissive
+for delete
+to authenticated
+using (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'administrador'
+  )
+);
+
+create policy "Permitir inserção de simulados para usuários comuns"
+on public.simulados
+as permissive
+for insert
+to authenticated
+with check (
+  exists (
+    select 1 from public.usuarios
+    where public.usuarios.id = auth.uid()
+    and public.usuarios.nivel_acesso = 'usuario'
+  )
+);
+
+CREATE POLICY "Permitir inserção de usuários autenticados"
+ON public.usuarios
+FOR INSERT
+TO authenticated
+WITH CHECK (auth.role() = 'authenticated');
+
+CREATE POLICY "Permitir atualização de dados do próprio usuário"
+ON public.usuarios
+FOR UPDATE
+TO authenticated
+USING (auth.role() = 'authenticated' AND email = auth.email());
+
+CREATE POLICY "Permitir leitura dos próprios dados"
+ON public.usuarios
+FOR SELECT
+TO authenticated
+USING (auth.role() = 'authenticated' AND email = auth.email());
+
+
+CREATE OR REPLACE FUNCTION sync_auth_users_to_public_usuarios()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.usuarios (id, email, criado_em)
+  VALUES (NEW.id, NEW.email, NOW())
+  ON CONFLICT (id) DO NOTHING;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER on_auth_user_created
+AFTER INSERT ON auth.users
+FOR EACH ROW
+EXECUTE FUNCTION sync_auth_users_to_public_usuarios();
+
+CREATE POLICY "Permitir inserção de usuários para qualquer usuário"
+ON public.usuarios
+AS PERMISSIVE
+FOR INSERT
+TO authenticated
+WITH CHECK (true);
+
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+
+INSERT INTO public.usuarios (nome, email, senha, nivel_acesso)
+VALUES ('Nome Teste', 'emailteste@example.com', 'senhateste', 'usuario');
+
+ALTER TABLE public.usuarios DISABLE ROW LEVEL SECURITY;
+
+
+CREATE OR REPLACE FUNCTION sync_auth_users_to_public_usuarios()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO public.usuarios (id, email, criado_em)
+  VALUES (NEW.id, NEW.email, NOW())
+  ON CONFLICT (id) DO NOTHING;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER on_auth_user_created
+AFTER INSERT ON auth.users
+FOR EACH ROW
+EXECUTE FUNCTION sync_auth_users_to_public_usuarios();
+
+INSERT INTO public.usuarios (nome, email, senha, nivel_acesso)
+VALUES ('Teste', 'ckifumbi@hotmail.com', 'clive123', 'usuario');
+
+
+
+Também, preciso que criemos rotas de listagem gerias,
+Por exemplo uma rota que liste TODOS os cursos, não só os inseridos por UM usuário, mas TODOS,
+Do mesmo jeito, uma rota que liste TODOS os módulos, não só os de um curso específico, mas TODOS,
+Do mesmo jeito, uma rota que liste TODAS as provas, não só as de um módulo específico, mas TODAS,
+Do mesmo jeito, uma rota que liste TODAS as questões, não só as de uma prova específica, mas TODOS,
+

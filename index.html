@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="frontend/frontend 1/css/style.css">
+
+        <title>Nefropapers</title>
+    </head>
+    <body>
+        <!-- tela de entrada do app -->
+        <div id="inputScreen"><img src="frontend/frontend 1/assets/Nefropapers-logo.png" alt=""></div>
+        
+        <!-- tela de login do usuario -->
+        <div id="main_container"> </div>
+        <div class="container">
+            <!-- Imagem do cabeçalho de login -->
+            <div class="home-img">
+                <img src="frontend/frontend 1/assets/Nefropapers-logo.png" alt="logo da Nefropapers">
+            </div>
+            <div class="logo">
+                <img src="./frontend/frontend 1/assets/Nefropapers-logo-removebg.png" alt="">
+            </div>
+    
+            
+            <div class="logins">
+                <!-- login dos usuarios -->
+                <!-- <form action="" id="form" class="formulario"> -->
+                    <form  id="form" class="formulario">
+                        <div class="log-inputs" id="log-inputs">
+                            <label for="email">Email</label>
+                            <input name="email" class="inputEmail" type="email" placeholder="Email" id="inputEmail" required>
+                            <label class="labelpass" for="senha">Sua senha</label>
+                            <input name="senha" class="inputPass" type="password" placeholder="Senha" id="inputPass" minlength="8" required>
+                            <span  id="itempass" class="showPass"><i class="fa-regular fa-eye"></i></span>
+                        </div>
+                        
+                        <div class="check-inputs">
+                            
+                            <div class="checkbox">
+                                <label class="checkbox">
+                                    <input id="inputCheck" type="checkbox">
+                                    <span>Lembrar senha</span>
+                                </label>
+                            </div>
+                            
+                            <div class="href">
+                                <a id="forgotPass" href="#">Esqueci a senha</a>
+                            </div>
+                            
+                        </div>
+                        <div class="messageError"></div>
+                        <button type="submit" id="loginButton" class="login-button">Entar</button>
+                    </form>
+                    
+                    <div class="lines">
+                        <div class="line"></div>
+                        <p>Entrar com</p>
+                        <div class="line"></div>
+                    </div>
+                    
+                <!--    <div id="buttonDiv"></div>
+                    <div class="midias" >
+                        <a  id="hrefGoogle" href="">
+                            <img class="glg" src="frontend/frontend 1/assets/google-logo.png" alt="logo do google">
+                        </a>
+                        
+                        <a id="hrefMeta" href="" target="_blank">
+                            <img class="meta" src="frontend/frontend 1/assets/meta-logo.png" alt="logo do facebook/meta">
+                        </a> 
+                    </div> -->
+                    
+                    <div class="first">
+                        <a id="firstHref" href="">Primeiro acesso</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- sessão para recuperar senha -->
+            <section class="section-recover">
+                <div class="recoverPass">
+                    <p>Esqueci a senha</p>
+                    <div class="inputs-recover">
+                        <label for="email">Email</label>
+                        <input id="recoverPassword" type="email" placeholder="Coloque seu e-mail" required>
+                        <button id="recoverEmail" type="submit">Enviar codigo</button>    
+                    </div>
+                    <div class="rememberPass">
+                        <a id="hrefRemenber" href="">Lembrou a senha? Entre aqui!</a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- sessão para cadastro de usuario -->
+            
+            <section class="registration">
+                <h2>Criar Conta</h2>
+                <form class="form-Regist" id="form-Regist">
+                    <div class="name">
+                        <label for="user">Nome completo</label>
+                        <input name="user" id="name" type="text" placeholder="Escreva seu nome completo" required>
+                        
+                    </div>
+                    <div class="senha">
+                        <label for="senha">Senha</label>
+                        <input name="senha" id="senha" type="password" placeholder="Escreva sua senha" minlength="8" required>
+                        <span onclick="" class="mostarSenha"><i class="fa-regular fa-eye"></i></span>
+                    </div>
+                    <div class="confirmaçao">
+                        <label for="confirmar">Confirmar Senha</label>
+                        <input name="confirmar" id="confirmaçaoSenha" type="password" placeholder="Repita sua senha" minlength="8" required>
+                        <span onclick="" class="confirSenha"><i class="fa-regular fa-eye"></i></span>
+                    </div>
+                    <div class="Email">
+                        <label for="EMAIL">E-mail</label>
+                        <input name="EMAIL" id="Email" type="text" placeholder="Escreva seu email" required>
+                    </div>
+                    <div id="Error" class="messageError"></div>
+                    <button class="cadastro" id="cadastro" type="submit">Criar Conta</button>
+                </form>
+                
+                <div class="lines-login">
+                    <div class="line-login"></div>
+                    <p>Entrar com</p>
+                    <div class="line-login"></div>
+                </div>
+                
+                <div class="midias">
+                    <a href="#"><img src="frontend/frontend 1/assets/google-logo.png" alt="logo do google"></a>
+                    <a href="https://www.facebook.com/"><img src="frontend/frontend 1/assets/meta-logo.png" alt="logo do facebook/meta"></a>
+                    
+                </div>
+                
+                <div class="logar">
+                    <a id="hrefLogar" href="">Já tem uma conta? Entar</a>
+                </div>
+
+                <div class="logo">
+                    <img src="./frontend/frontend 1/assets/Nefropapers-logo-removebg.png" alt="">
+                </div>
+        
+                
+            </section>
+            
+            
+            <section class="userHome">
+                <div class="homePage">
+                    <img id="profileImageHome" src="https://w7.pngwing.com/pngs/1000/665/png-transparent-computer-icons-profile-s-free-angle-sphere-profile-cliparts-free.png" alt="">
+                    <div class="dataUser">
+                        <h1 id="dataUserName"></h1>
+                        <p id="dataUserEmail"></p>
+                    </div>
+                    <div class="iconConfig">
+                        <span><i class="fa-sharp fa-solid fa-gear"></i></span>
+                    </div>
+                </div>
+                
+                <div class="performance">
+                    <div class="textPerf">
+                        <p>Desempenho</p>
+                    </div>
+                    <div class="iconPerf">
+                        <span><i class='bx bx-chevron-down'></i></span>
+                    </div>
+                </div>
+
+                <!-- BOX DESEMPENHO -->
+                <div class="boxDesempenho">
+                    <div class="dadosDesempenho">
+                        
+                        <div class="rendimento">
+                            <span><i class="fa-solid fa-arrow-trend-up"></i></span>
+                            <h2>Rendimento</h2>
+                            <span class="porcentagem">68%</span>
+                        </div>
+                        
+                        <div class="totalDeQuestoes">
+                            <span><i class="fa-solid fa-graduation-cap"></i></span>
+                            <h2>Total de resoluções</h2>
+                            <span class="porcentagem">XX Questões</span>
+                        </div>
+                    </div>
+        
+                    <div class="dadosDesempenho">
+                        
+                        <div class="totalAcertos" >
+                            <span><i class="fa-solid fa-check"></i></span>
+                            <h2>Total de acertos</h2>
+                            <span class="porcentagem">37 Questões</span>
+                        </div>
+                        
+                        <div class="totalErros">
+                            <span><i class="fa-solid fa-x"></i></span>
+                            <h2>Total de erros</h2>
+                            <span class="porcentagem">17 Questões</span>
+                        </div>
+                    </div>
+                </div>
+        
+                
+                <div class="homeTests">
+                    <p>Ultimo teste</p>
+                    <div class="last-teste">
+                            <div class="prime-teste">
+                                <h2>Teste 1</h2>
+                                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione cupiditate velit doloremque itaque consectetur tenetur quam ccusamus.</P>
+                            </div>
+                            <div class="image-teste">
+                                <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="imagem do teste">
+                            </div>
+                    </div>
+                </div>
+                    
+                <div class="all-testes">
+                    <div class="containerTests">
+                        <div class="title-tests">
+                            <h2>Todos os testes</h2>
+                        </div>
+                        <div class="icon-tests">
+                            <p>ver todos <span><i class='bx bx-right-arrow-alt' ></i></span></p>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- <div class="all-histor" id="testes-disponiveis">
+                        
+                    <a href="/frontend/frontend 2/testdetails.html" class="historicos">
+                        <div class="imgCurso">
+                            <img src="" alt="">
+                        </div>
+                        <div class="texts">
+                            <div class="stars">
+                                <h2>Teste 1</h2>
+                                <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="5"></i></span>  
+                            </div>
+                            <div class="porcetagem">
+                                <p>50% de acerto</p>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="1"></i></span>
+                        </div>
+                    </a>        
+                    
+                    <a href="/frontend/frontend 2/testdetails.html" class="historicos">
+                        <div class="imgCurso">
+                            <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="">
+                        </div>
+                        <div class="texts">
+                            <div class="stars">
+                                <h2>Teste 2</h2>
+                                <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                            </div>
+                            <div class="porcetagem">
+                                <p>50% de acerto</p>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="2"></i></span>
+                        </div>
+                    </a>
+                    
+                    <a href="/frontend/frontend 2/testdetails.html" class="historicos">
+                        <div class="imgCurso">
+                            <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3313916:1671446099/concurso-publico.jpg?f=4x3&$p$f=ebf9819" alt="">
+                        </div>
+                        <div class="texts">
+                            <div class="stars">
+                                <h2>Teste 3</h2>
+                                <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                            </div>
+                            <div class="porcetagem">
+                                <p>50% de acerto</p>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="3"></i></span>
+                        </div>
+                    </a>
+    
+                    <a href="/frontend/frontend 2/testdetails.html" class="historicos">
+                        <div class="imgCurso">
+                            <img src="https://roraimaemtempo.com.br/wp-content/uploads/2021/08/vestibular-2-860x573.jpg" alt="">
+                        </div>
+                        <div class="texts">
+                            <div class="stars">
+                                <h2>Teste 4</h2>
+                                <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                            </div>
+                            <div class="porcetagem">
+                                <p>50% de acerto</p>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="4"></i></span>
+                        </div>
+                    </a>
+                </div> -->
+
+                <div class="all-histor" id="testes-disponiveis">
+                    <!-- Teste 1 -->
+                    <div class="boxHome">
+                        <div class="imgCurso">
+                            <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="Imagem do Teste 1">
+                        </div>
+                        <div class="boxHomeTexts">
+                            <h2>Teste 1</h2>
+                            <div class="boxHomePorcetagem">
+                                <p>50% de acerto</p>
+                            </div>
+                            <div class="boxHomeTags">
+                                <span data-value="1">DRC</span>
+                                <span data-value="2">IRA</span>
+                                <span data-value="3">Transplante</span>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="1"></i></span>
+                        </div>
+                    </div>
+                
+                    <!-- Teste 2 -->
+                    <div class="boxHome">
+                        <div class="imgCurso">
+                            <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3313916:1671446099/concurso-publico.jpg" alt="Imagem do Teste 2">
+                        </div>
+                        <div class="boxHomeTexts">
+                            <h2>Teste 2</h2>
+                            <div class="boxHomePorcetagem">
+                                <p>70% de acerto</p>
+                            </div>
+                            <div class="boxHomeTags">
+                                <span data-value="4">Hepatologia</span>
+                                <span data-value="5">Clínica Médica</span>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="2"></i></span>
+                        </div>
+                    </div>
+                
+                    <!-- Teste 3 -->
+                    <div class="boxHome">
+                        <div class="imgCurso">
+                            <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3313916:1671446099/concurso-publico.jpg" alt="Imagem do Teste 3">
+                        </div>
+                        <div class="boxHomeTexts">
+                            <h2>Teste 3</h2>
+                            <div class="boxHomePorcetagem">
+                                <p>30% de acerto</p>
+                            </div>
+                            <div class="boxHomeTags">
+                                <span data-value="6">Nefrologia</span>
+                                <span data-value="7">Cardiologia</span>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="3"></i></span>
+                        </div>
+                    </div>
+                
+                    <!-- Teste 4 -->
+                    <div class="boxHome">
+                        <div class="imgCurso">
+                            <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="Imagem do Teste 4">
+                        </div>
+                        <div class="boxHomeTexts">
+                            <h2>Teste 4</h2>
+                            <div class="boxHomePorcetagem">
+                                <p>90% de acerto</p>
+                            </div>
+                            <div class="boxHomeTags">
+                                <span data-value="8">Oncologia</span>
+                                <span data-value="9">Infectologia</span>
+                            </div>
+                        </div>
+                        <div class="iconHeart">
+                            <span><i class="fa-solid fa-heart" data-value="4"></i></span>
+                        </div>
+                    </div>
+                </div>
+                
+    
+            </section>
+    
+    
+    <!-- PopUp-User -->
+            <section class="popUpUser">
+                <div class="edit-User">
+                    <img src="" alt="">
+                    <h2><i class="fa-solid fa-pen"></i></h2>
+                    <span><i class='bx bxs-pencil'></i></span>
+                </div>
+                <div class="dateUser">
+                    <div class="containerDate">
+                        <label for="">Email</label>
+                        <input type="text" placeholder="text">
+                    </div>
+                    <div class="descriptionUser">
+                        <label for="bio">Bio</label>
+                        <textarea  name="bio" id="bio" placeholder="Diga algo sobre voçe"></textarea>
+                    </div>
+                    <div class="locationUser">
+                        <div class="location">
+                            <label for="uf">UF</label>
+                            <input type="text" placeholder="xx">
+                        </div>
+                        <div class="city">
+                            <label for="city">Cidade</label>
+                            <input type="text" placeholder="lorem ipsum">
+                        </div>
+                    </div>
+                </div>
+                <button class="update">Atualizar</button>
+            </section>
+            
+            
+            <!-- sessão para criar as questões do quiz -->
+            <section class="create-question">
+                
+                
+                <div class="prepare-question">
+                    <div class="edit">
+                        <span class="createBack"><img src="frontend/frontend 1/assets/seta-esquerda.png" alt=""></span>
+                        <p>Editar questão</p>
+                    </div>
+                    
+                    <div class="questionContainer">
+                        <div class="edit-questao">
+                            <label for="Questao">Questao 1 <span><i class='bx bxs-pencil'></i></span></label> 
+                            <div class="area-text">
+                                <textarea name="Questao" id="textQuest" placeholder="Enunciado..."></textarea>
+                                <span class="text-icon"><i class='bx bxs-pencil'></i></span>
+                            </div>   
+                        </div>
+                        
+                        <div class="filter-question">
+                            
+                            <!-- <label class="label-filter" for="">Categoria</label> -->
+                            <label class="label-filter" for="modulos">Categoria (Máximo 3)</label>
+                            
+                            <div class="search">
+                                <!-- <input type="text" placeholder="Procurar questão"> -->
+                                <!-- COLOCAÇÃO DO ID -->
+                                <input type="text" id="searchModulo" placeholder="Digite para procurar módulo">
+                                <span><i class='bx bx-search' ></i></span>
+                            </div>
+                            
+                        <!-- Lista de sugestões dinâmicas -->
+                        <ul id="moduloSugestoes" class="suggestions"></ul>
+                        
+                        <!-- <div class="categoria">
+                            <div class="group"><p>Categoria 1 <span><i class='bx bx-x'></i></span></p></div>
+                            <div class="group"><p>Categoria 2 <span><i class='bx bx-x'></i></span></p></div>
+                            <div class="group"><p>Categoria 3 <span><i class='bx bx-x'></i></span></p></div>
+                        </div> -->
+                        <!-- CRIAÇÃO DA CLASSE DE MÓDULOS -->
+                        <div class="categoria">
+                            <div class="group"><p>Categoria 1 <span class="remove-modulo" data-index="1"><i class='bx bx-x'></i></span></p></div>
+                            <div class="group"><p>Categoria 2 <span class="remove-modulo" data-index="2"><i class='bx bx-x'></i></span></p></div>
+                            <div class="group"><p>Categoria 3 <span class="remove-modulo" data-index="3"><i class='bx bx-x'></i></span></p></div>
+                        </div>
+                        
+                        <div class="gabarito">
+                            <button class="gab-btn1"><span><i class='bx bx-file'></i></span>Fazer gabarito</button>
+                            <button class="gab-btn2"><span><i class='bx bx-upload' ></i></span>imagem</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="questions">
+                    
+                    <div class="question">
+                        <label for="A">A</label>
+                        <div class="input-question">
+                            <input type="text" name="A" placeholder="loren ipsum">
+                            <span class="icon-question"><i class='bx bxs-pencil' style='color:#b6b6b6'></i></span>
+                        </div>
+                        <div class="check-question">
+                            <label class="switch">
+                                <input type="checkbox" value="A">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="B">B</label>
+                        <div class="input-question">
+                            <input type="text" name="B" placeholder="loren ipsum">
+                            <span class="icon-question"><i class='bx bxs-pencil' style='color:#b6b6b6'></i></span>
+                        </div>
+                        <div class="check-question">
+                            <label class="switch">
+                                <input type="checkbox" value="B">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="C">C</label>
+                        <div class="input-question">
+                            <input type="text" name="C" placeholder="loren ipsum">
+                            <span class="icon-question"><i class='bx bxs-pencil' style='color:#b6b6b6'></i></span>
+                        </div>
+                        <div class="check-question">
+                            <label class="switch">
+                                <input type="checkbox" value="C">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="D">D</label>
+                        <div class="input-question">
+                            <input type="text" name="D" placeholder="loren ipsum">
+                            <span class="icon-question"><i class='bx bxs-pencil' style='color:#b6b6b6'></i></span>
+                        </div>
+                        <div class="check-question">
+                            <label class="switch">
+                                <input type="checkbox" value="D">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="question">
+                        <label for="E">E</label>
+                        <div class="input-question">
+                            <input type="text" name="E" placeholder="loren ipsum">
+                            <span class="icon-question"><i class='bx bxs-pencil' style='color:#b6b6b6'></i></span>
+                        </div>
+                        <div class="check-question">
+                            <label class="switch">
+                                <input type="checkbox" value="E">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subSection">
+                <div class="itemX">
+                    <p>item <strong>X</strong><span><i class='bx bxs-pencil' style='color:#b6b6b6'></i></span></p>
+                    <button class="uploadImg"><span><i class='bx bx-upload' ></i></span>Explicaçao</button>
+                </div>
+                <div class="Explication">
+                    <label for="">Explicação</label>
+                    <textarea class="explication-text"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</textarea>
+                </div>
+                
+                <div id="msgError"></div>
+                
+                <!-- <div class="saveBtn" >
+                    <button>Salvar</button>
+                </div> -->
+                <div class="saveBtn">
+                    <button onclick="criarQuestao(modulosSelecionados)">Salvar</button>
+                </div>
+                
+            </div>
+            </section>
+
+            <!-- <div class="overlay2"></div>
+            <div class="overlay"></div> -->
+
+            <section class="modal">
+                <div class="popUpImg">
+                    <img src="" alt="" class=popup-imagem>
+                </div>
+                
+            </section>
+
+            <!-- sessão de historico do usuario -->
+
+            <section class="historico" id="historico">
+                <div class="edit">
+                    <span class="histrBack"><img src="frontend/frontend 1/assets/seta-esquerda.png" alt=""></span>
+                    <p>Histórico</p>
+                </div>
+                
+                <div class="search-list">
+                    <input list="list" id="search-list" placeholder="Últimos 7 dias">
+                    <datalist id="list">
+                        <option value="1 dias"></option>
+                        <option value="3 dias"></option>
+                        <option value="7 dias"></option>
+                        <option value="14 dias"></option>
+                    </datalist>
+                </div>
+                <div class="textResult"><p>Últimos testes</p></div>
+                
+                <div class="historicos">
+                    <div class="imgCurso">
+                        <img src="" alt="">
+                    </div>
+                    <div class="texts">
+                        <div class="stars">
+                            <h2>Teste 1</h2>
+                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="5"></i></span>  
+                        </div>
+                        <div class="porcetagem">
+                            <p>50% de acerto</p>
+                        </div>
+                    </div>
+                    <div class="iconHeart">
+                        <span><i class="fa-solid fa-heart" data-value="1"></i></span>
+                    </div>
+                </div>
+                
+                <div class="historicos">
+                    <div class="imgCurso">
+                        <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="">
+                    </div>
+                    <div class="texts">
+                        <div class="stars">
+                            <h2>Teste 2</h2>
+                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                        </div>
+                        <div class="porcetagem">
+                            <p>50% de acerto</p>
+                        </div>
+                    </div>
+                    <div class="iconHeart">
+                        <span><i class="fa-solid fa-heart" data-value="2"></i></span>
+                    </div>
+                </div>
+                
+                <div class="historicos">
+                    <div class="imgCurso">
+                        <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3313916:1671446099/concurso-publico.jpg?f=4x3&$p$f=ebf9819" alt="">
+                    </div>
+                    <div class="texts">
+                        <div class="stars">
+                            <h2>Teste 3</h2>
+                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                        </div>
+                        <div class="porcetagem">
+                            <p>50% de acerto</p>
+                        </div>
+                    </div>
+                    <div class="iconHeart">
+                        <span><i class="fa-solid fa-heart" data-value="3"></i></span>
+                    </div>
+                </div>
+                
+                <div class="historicos">
+                    <div class="imgCurso">
+                        <img src="https://roraimaemtempo.com.br/wp-content/uploads/2021/08/vestibular-2-860x573.jpg" alt="">
+                    </div>
+                    <div class="texts">
+                        <div class="stars">
+                            <h2>Teste 4</h2>
+                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                        </div>
+                        <div class="porcetagem">
+                            <p>50% de acerto</p>
+                        </div>
+                    </div>
+                    <div class="iconHeart">
+                        <span><i class="fa-solid fa-heart" data-value="4"></i></span>
+                    </div>
+                </div>
+                
+                <div class="historicos">
+                    <div class="imgCurso">
+                        <img src="https://www.reporterdiario.com.br/wp-content/uploads/2023/12/Camara-dos-Deputados-abre-inscricoes-para-concurso-com-salario-de-ate-R-34-mil-1200x800-1-e1703623255710.png" alt="">
+                    </div>
+                    <div class="texts">
+                        <div class="stars">
+                            <h2>Teste 5</h2>
+                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                            <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                        </div>
+                        <div class="porcetagem">
+                            <p>50% de acerto</p>
+                        </div>
+                    </div>
+                    <div class="iconHeart">
+                        <span><i class="fa-solid fa-heart" data-value="5"></i></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SESSÃO ONDE FICARA TODOS OS TESTES FEITOS PELO USUARIO -->
+            <section class="all-tests">
+                
+                <div class="header-teste">
+                    <img class="allBackTets" src="./frontend/frontend 1/assets/seta-esquerda.png" alt="">
+                    <p>Todos os testes</p>
+                </div>
+                
+                <div class="filter-header-testes">
+                    <div class="filter-input">
+                        <input type="text" placeholder="Procurar teste">
+                        <span><i class='bx bx-microphone' ></i></span>
+                        <span class="lupa"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    </div>
+                </div>
+                
+                <!-- SESSÃO FEITOS POR MIM -->
+                <!-- <div class="boxTest"> -->
+                    
+                    <!-- ACRESCENTEI UM ID PARA A INTEGRAÇÃO -->
+                <div class="boxTest" id="feitos-por-mim">
+                    <div class="titlebox">
+                        <p>Feitos por mim</p>
+                        <span><i class='bx bx-chevron-down' ></i></span>
+                    </div>
+                    <div class="all-histor">
+                        <div class="historicos">
+                            <div class="imgCurso">
+                                <img src="" alt="">
+                            </div>
+                            <div class="texts">
+                                <div class="stars">
+                                    <h2>Teste 1</h2>
+                                    <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="5"></i></span>  
+                                </div>
+                                <div class="porcetagem">
+                                    <p>50% de acerto</p>
+                                </div>
+                            </div>
+                            <div class="iconHeart">
+                                <span><i class="fa-solid fa-heart" data-value="1"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="historicos">
+                            <div class="imgCurso">
+                                <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="">
+                            </div>
+                            <div class="texts">
+                                <div class="stars">
+                                    <h2>Teste 2</h2>
+                                    <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                                </div>
+                                <div class="porcetagem">
+                                    <p>50% de acerto</p>
+                                </div>
+                            </div>
+                            <div class="iconHeart">
+                                <span><i class="fa-solid fa-heart" data-value="2"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="historicos">
+                            <div class="imgCurso">
+                                <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3313916:1671446099/concurso-publico.jpg?f=4x3&$p$f=ebf9819" alt="">
+                            </div>
+                            <div class="texts">
+                                <div class="stars">
+                                    <h2>Teste 3</h2>
+                                    <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                    <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                                </div>
+                                <div class="porcetagem">
+                                    <p>50% de acerto</p>
+                                </div>
+                            </div>
+                            <div class="iconHeart">
+                                <span><i class="fa-solid fa-heart" data-value="3"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SESSÃO TODOS OS TESTES -->
+                    <!-- <div class="boxTest"> -->
+                        
+                        <!-- ACRESCENTEI UM ID PARA A INTEGRAÇÃO -->
+                        <div class="boxTest" id="todos-os-testes">
+                            <div class="titlebox">
+                                <p>Todos os testes</p>
+                                <span><i class='bx bx-chevron-down' ></i></span>
+                            </div>
+                            <div class="all-histor">
+                                <div class="historicos">
+                                    <div class="imgCurso">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <div class="stars">
+                                            <h2>Teste 1</h2>
+                                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="5"></i></span>  
+                                        </div>
+                                        <div class="porcetagem">
+                                            <p>50% de acerto</p>
+                                        </div>
+                                    </div>
+                                    <div class="iconHeart">
+                                        <span><i class="fa-solid fa-heart" data-value="1"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="historicos">
+                                    <div class="imgCurso">
+                                        <img src="https://provafacilnaweb.com.br/wp-content/uploads/2020/11/leitor-de-gabarito-de-provas-o-que-e-e-como-funciona-3-2048x1365-1.jpg" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <div class="stars">
+                                            <h2>Teste 2</h2>
+                                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                                        </div>
+                                        <div class="porcetagem">
+                                            <p>50% de acerto</p>
+                                        </div>
+                                    </div>
+                                    <div class="iconHeart">
+                                        <span><i class="fa-solid fa-heart" data-value="2"></i></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="historicos">
+                                    <div class="imgCurso">
+                                        <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3313916:1671446099/concurso-publico.jpg?f=4x3&$p$f=ebf9819" alt="">
+                                    </div>
+                                    <div class="texts">
+                                        <div class="stars">
+                                            <h2>Teste 3</h2>
+                                            <span><i class="fa-solid fa-star" data-value="1"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="2"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="3"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="4"></i></span>
+                                            <span><i class="fa-solid fa-star" data-value="5"></i></span>
+                                        </div>
+                                        <div class="porcetagem">
+                                            <p>50% de acerto</p>
+                                        </div>
+                                    </div>
+                                    <div class="iconHeart">
+                                        <span><i class="fa-solid fa-heart" data-value="3"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="creationIcon" onclick="toggleModal()">
+                                <span><i class="fa-solid fa-plus"></i></span>
+                                <div class="modalCreate">
+                                    <p class="newTest">Novo teste <span><i class='bx bx-file' ></i></span></p>
+                                    <div class="line"></div>
+                                    <p class="newQuestion">Nova Questão <span><i class="fa-regular fa-comment-dots"></i></span></p>
+                                </div>
+                            </div>        
+                        </div>    <!--   Estava faltando      -->
+                </div> <!--   Estava faltando      -->
+            </section>
+                    
+            <div class="navigation" id="navBar">
+                <ul>
+                    <li class="house"><a href="#"><span><i class="fa-solid fa-house"></i></span></a></li>
+                    <li class="book"><a href="#"><span><i class="fa-solid fa-book"></i></span></a></li>
+                    <li class="clock"><a href="#"><span><i class="fa-regular fa-clock"></i></span></a></li>
+                    <div class="indicador"><span></span></div>
+                </ul>
+            </div>
+        
+        
+    </div>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="frontend/frontend 1/js/adm.js"></script>
+    <script src="frontend/frontend 1/js/api.js"></script>
+    <script src="frontend/frontend 1/js/forms.js"></script>
+    <script src="frontend/frontend 1/js/index.js"></script>
+    <script src="frontend/frontend 1/js/integracao.js"></script>
+</body>
+</html>
+
+
