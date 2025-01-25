@@ -81,3 +81,8 @@ server.listen(PORT, () => {
   console.log(`Ambiente: ${process.env.NODE_ENV || 'desenvolvimento'}`);
   console.log(`Servidor disponível em: http://localhost:${PORT}`);
 });
+
+console.log('SUPABASE_URL:', process.env.SUPABASE_URL);
+console.log('SUPABASE_KEY:', process.env.SUPABASE_KEY);
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
+console.log('JWT_SECRET:', process.env.JWT_SECRET);
