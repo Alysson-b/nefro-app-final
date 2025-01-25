@@ -11,12 +11,15 @@ const app = express();
 const server = http.createServer(app); 
 const io = new Server(server, {
   cors: {
-    origin: 'https://alysson-b.github.io',
-    credentials: true,
-    origin: ['http://127.0.0.1:5500', 'http://localhost:5500'], 
-    origin: '*', 
+    origin: [
+    'https://alysson-b.github.io', 
+    'http://127.0.0.1:5500', 
+    'http://localhost:5500',
+    '*' // Be cautious with this in production
+  ]
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-API-KEY', 'user-id'], 
+    credentials: true
   },
 });
 
