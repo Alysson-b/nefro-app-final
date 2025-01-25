@@ -398,12 +398,12 @@ async function carregarDesempenhoUsuario(apiKey) {
 }
 
 // Chamando a função ao carregar a página
-/* document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const apiKey = localStorage.getItem('apiKey');
     if (!apiKey) {
         console.error('API Key ausente. Usuário não autenticado.');
         return;
-    } */
+    }
 
     // Carrega o desempenho do usuário ao carregar a página
     await carregarDesempenhoUsuario(apiKey);
