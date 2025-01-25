@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* transiçao da tela inicial */
     
-    window.onload = function () {
+ /*    window.onload = function () {
         setTimeout(function () {
             const mainContainer = document.getElementById('main_container');
             const inputScreen = document.getElementById('inputScreen');
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500); 
         }, 500); 
     };
-
+ */
 
     function login() {
         // debugger
