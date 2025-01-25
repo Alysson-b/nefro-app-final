@@ -142,7 +142,7 @@ async function carregarTestes(apiKey) {
 
 async function initializePage() {
     const apiKey = localStorage.getItem('apiKey');
-    if (!apiKey) {
+   if (!apiKey && !window.location.pathname === "/index.html") {
         window.location.href = 'index.html';
         return;
     }
