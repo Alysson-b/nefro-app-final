@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 $font-family: "Inter", sans-serif;
 $prymary-color: #04345A;
 $secondy-color: #00679A;
@@ -639,13 +641,14 @@ $animation: transitionScreen 0.6s ease-in-out;
 
 .boxHome{
     width: 90%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: $white-color;
     border-radius: 10px;
-    padding: 15px;
-    gap: 10px;
+    padding: 32px;
+    gap: 6px;
     margin-bottom: 10px
 }
 .imgCurso{
@@ -688,6 +691,13 @@ $animation: transitionScreen 0.6s ease-in-out;
     border-radius: 8px;
     color: $white-color;
     padding: 2px 5px;
+
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+
 }
 .boxHomePorcetagem{
     font-size: 14px;
@@ -1521,7 +1531,7 @@ $animation: transitionScreen 0.6s ease-in-out;
     display: none;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
     background: $gray-color-2;
     animation: $animation;
 }
@@ -1766,7 +1776,7 @@ $animation: transitionScreen 0.6s ease-in-out;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    width: 100%;
+    width: 90%;
     background-color: $gray-color-2;
     animation: $animation;
 }
@@ -1821,7 +1831,7 @@ $animation: transitionScreen 0.6s ease-in-out;
 
 .filter-header-testes span{
     position: absolute;
-    right: 25px;
+    right: 5%;
 }
 .filter-header-testes .bx{
     font-size: 17px;
@@ -1829,7 +1839,7 @@ $animation: transitionScreen 0.6s ease-in-out;
 }
 .filter-header-testes .lupa{
     position: absolute;
-    left: 20px;
+    left: 3.5%;
     color: $color-gray-3;
 }
 
@@ -1838,8 +1848,9 @@ $animation: transitionScreen 0.6s ease-in-out;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
+    width: 98%;
 }
+
 .titlebox{
     display: flex;
     align-items: center;
@@ -2437,6 +2448,26 @@ $animation: transitionScreen 0.6s ease-in-out;
 }
 
 
+$font-family: "Inter", sans-serif;
+$prymary-color: #04345A;
+$secondy-color: #00679A;
+$light-color: #D2EBE7;
+$light-blue-color:#8ED7F0;
+$gray-color: #858585;
+$gray-color-2: #efefef;
+$color-gray-3: #ababab;
+$white-color: #fff;
+$red-color: #f30000;
+$orange-color: #ff9600;
+$green-color: #129820;
+$black-color: #000;
+$backgound-linear: #004B87, #04345A;
+$animation: transitionScreen 0.6s ease-in-out;
+$accent-color: #e74c3c;
+$background-color: #f5f5f5;
+$hover-bg-color: rgba(0, 0, 0, 0.05);
+$shadow-color: rgba(0, 0, 0, 0.1);
+
 
 
 @media (min-width: 800px){
@@ -2456,6 +2487,8 @@ $animation: transitionScreen 0.6s ease-in-out;
     
     .container {
         display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: rgba(255, 255, 255, 0.863);
         border: 1px solid #eee;
         border-radius: 4px;
@@ -2628,6 +2661,7 @@ $animation: transitionScreen 0.6s ease-in-out;
     }
     
     .first {
+        margin-top: 2rem;
         text-align: center;
     }
     
@@ -3232,14 +3266,14 @@ $animation: transitionScreen 0.6s ease-in-out;
                 .boxHomeTags {
                     display: flex;
                     flex-wrap: nowrap;
-                    gap: 8px;
+                    gap: 2px;
 
                     span {
                     background-color: $secondy-color;
                     color: $white-color;
                     padding: 4px 12px;
                     border-radius: 16px;
-                    font-size: 12px;
+                    font-size: 8px;
                     }
                 }
                 }

@@ -1,4 +1,10 @@
 // let totalQuestoes = null
+
+document.querySelector('.back-arrow').addEventListener('click', () => {
+    const simuladoId = new URLSearchParams(window.location.search).get('id');
+    window.location.href = `testdetails.html?id=${simuladoId}`;
+});
+
 // BUSCAR DADOS DA QUESTÃO
 async function buscarDadosQuestao(questaoId) {
     const apiKey = localStorage.getItem('apiKey');
@@ -152,10 +158,6 @@ function configurarNavegacao() {
     }
 }
 
-// function redirecionarParaQuestao(questionId) {
-//     const testId = new URLSearchParams(window.location.search).get('testId');
-//     window.location.href = `questao.html?testId=${testId}&questionId=${questionId}`;
-// }
 function redirecionarParaQuestao(questionId) {
     const testId = new URLSearchParams(window.location.search).get('testId');
     // Adicione uma flag para indicar que é uma navegação interna
@@ -167,7 +169,7 @@ configurarNavegacao();
 
 
 
-async function configurarGabaritoButton() {
+async function configurarGabaritoButton(submitButtonClicked = false) {
     const gabaritoButton = document.querySelector('.question-button');
     const popupContainer = document.getElementById('popup-gabarito');
     const explanationContent = popupContainer?.querySelector('.explanation-content');
@@ -182,6 +184,16 @@ async function configurarGabaritoButton() {
         return;
     }
 
+    // Caso o botão "Responder" ainda não tenha sido clicado, o botão "Gabarito" permanece desabilitado
+    if (!submitButtonClicked) {
+        gabaritoButton.disabled = true;
+        gabaritoButton.style.opacity = '0.5';
+        gabaritoButton.style.cursor = 'not-allowed';
+        console.log("Botão de gabarito desabilitado. Aguarde o clique no botão 'Responder'.");
+        return;
+    }
+
+    // Habilitar o botão de gabarito após clique no botão "Responder"
     gabaritoButton.disabled = false;
     gabaritoButton.style.opacity = '1';
     gabaritoButton.style.cursor = 'pointer';
@@ -217,16 +229,43 @@ async function configurarGabaritoButton() {
     console.log("Botão de gabarito configurado com sucesso.");
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    configurarGabaritoButton();
-});
+
+
+
+
+
+
+
+
+
+
+// Função para validar a presença do Attempt ID no LocalStorage
+function validarAttemptId() {
+    const attemptId = localStorage.getItem('attemptId');
+    if (!attemptId) {
+        console.error('Attempt ID não encontrado no localStorage.');
+        alert('Erro ao carregar o teste. Tente reiniciar o teste.');
+        window.location.href = '/testes.html'; // Redireciona para a página inicial de testes
+        return null;
+    }
+    return attemptId;
+}
 
 async function configurarSelecaoResposta() {
     const containerRespostas = document.querySelector('.answers');
     const submitButton = document.querySelector('.submit-button');
+    const gabaritoButton = document.querySelector('.question-button');
     const questionId = new URLSearchParams(window.location.search).get('questionId');
     const testId = new URLSearchParams(window.location.search).get('testId');
     let selectedAnswer = null;
+
+    // Desabilitar o botão Gabarito inicialmente
+    gabaritoButton.disabled = true;
+    gabaritoButton.style.opacity = "0.5";
+    gabaritoButton.style.cursor = "not-allowed";
+
+    const attemptId = validarAttemptId(); // Garantir que o Attempt ID esteja carregado
+    if (!attemptId) return; // Se não houver Attempt ID, a função não prossegue
 
     const progresso = JSON.parse(localStorage.getItem('progressoTeste')) || {};
     const progressoAtual = progresso[testId]?.[questionId];
@@ -246,6 +285,9 @@ async function configurarSelecaoResposta() {
         submitButton.style.backgroundColor = '#ccc';
         submitButton.style.color = '#999';
 
+        gabaritoButton.disabled = false; // Habilitar o botão Gabarito
+        gabaritoButton.style.opacity = "1";
+        gabaritoButton.style.cursor = "pointer";
         await configurarGabaritoButton();
 
         console.log("Questão já respondida. Feedback exibido.");
@@ -290,10 +332,28 @@ async function configurarSelecaoResposta() {
             return;
         }
     
-        console.log(`Resposta enviada: ${selectedAnswer}`);
+        console.log(`Resposta selecionada: ${selectedAnswer}`);
+    
+        const questionId = new URLSearchParams(window.location.search).get('questionId');
+        const testId = new URLSearchParams(window.location.search).get('testId');
         const attemptId = localStorage.getItem('attemptId');
-        const progressoTeste = JSON.parse(localStorage.getItem('progressoTeste')) || {};
-        const totalQuestoes = Object.keys(progressoTeste).length;
+    
+        if (!attemptId || !questionId || !testId) {
+            alert('Dados do teste estão incompletos. Tente recarregar a página.');
+            console.error('Attempt ID, Test ID ou Question ID não estão definidos.', {
+                attemptId,
+                testId,
+                questionId,
+            });
+            return;
+        }
+    
+        const respostaMapeada = selectedAnswer.toUpperCase(); // Certifique-se de que é um formato válido (e.g., "A", "B", "C")
+        console.log('Dados da requisição:', {
+            attempt_id: attemptId,
+            questao_id: questionId,
+            resposta: respostaMapeada,
+        });
     
         try {
             const response = await fetch(`http://localhost:3000/simulados/${testId}/responder`, {
@@ -305,12 +365,15 @@ async function configurarSelecaoResposta() {
                 body: JSON.stringify({
                     attempt_id: attemptId,
                     questao_id: questionId,
-                    resposta: selectedAnswer,
+                    resposta: respostaMapeada, // Enviar no formato correto
                 }),
             });
     
             if (!response.ok) {
-                throw new Error('Erro ao enviar a resposta.');
+                const errorData = await response.json();
+                console.error('Erro ao enviar a resposta:', errorData);
+                alert(`Erro ao enviar a resposta: ${errorData.error || 'Verifique os logs do servidor.'}`);
+                return;
             }
     
             const resultado = await response.json();
@@ -318,25 +381,26 @@ async function configurarSelecaoResposta() {
     
             salvarProgressoLocal(testId, questionId, selectedAnswer, resultado.resposta.correta);
     
+            // Exibir feedback visual
             await exibirResultado(selectedAnswer, questionId);
     
-            // Habilitar o botão do gabarito após enviar a resposta
-            await configurarGabaritoButton();
-    
+            // Desabilitar o botão "Responder"
             submitButton.disabled = true;
             submitButton.style.backgroundColor = '#ccc';
             submitButton.style.color = '#999';
-    
-            if (Object.keys(progressoTeste).length === totalQuestoes) {
-                await finalizarTeste(testId);
-            }
         } catch (erro) {
             console.error('Erro ao enviar a resposta:', erro.message);
             alert('Erro ao salvar a resposta. Por favor, tente novamente.');
         }
     });
-}
+                
+    
+    }
 
+
+
+
+    
 configurarSelecaoResposta();
 
 
@@ -588,53 +652,53 @@ async function carregarProgressoDoBackend(testId) {
 
 
 
-const progressoTeste = JSON.parse(localStorage.getItem('progressoTeste')) || {};
-if (Object.keys(progressoTeste).length === totalQuestoes) {
-    await finalizarTeste(testId);
-}
+// const progressoTeste = JSON.parse(localStorage.getItem('progressoTeste')) || {};
+// if (Object.keys(progressoTeste).length === totalQuestoes) {
+//     await finalizarTeste(testId);
+// }
 
 
-async function finalizarTeste(testId) {
-    const attemptId = localStorage.getItem('attemptId');
-    const progressoTeste = JSON.parse(localStorage.getItem('progressoTeste')) || {};
-    const respostasCorretas = Object.values(progressoTeste).filter(q => q.correta).length;
-    const respostasIncorretas = Object.values(progressoTeste).filter(q => !q.correta).length;
-    const totalQuestoes = Object.keys(progressoTeste).length;
-    const acerto = ((respostasCorretas / totalQuestoes) * 100).toFixed(2);
+// async function finalizarTeste(testId) {
+//     const attemptId = localStorage.getItem('attemptId');
+//     const progressoTeste = JSON.parse(localStorage.getItem('progressoTeste')) || {};
+//     const respostasCorretas = Object.values(progressoTeste).filter(q => q.correta).length;
+//     const respostasIncorretas = Object.values(progressoTeste).filter(q => !q.correta).length;
+//     const totalQuestoes = Object.keys(progressoTeste).length;
+//     const acerto = ((respostasCorretas / totalQuestoes) * 100).toFixed(2);
 
-    try {
-        const response = await fetch(`http://localhost:3000/simulados/${testId}/finalizar`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-API-KEY': localStorage.getItem('apiKey'),
-            },
-            body: JSON.stringify({
-                attempt_id: attemptId,
-                correctAnswers: respostasCorretas,
-                totalQuestions: totalQuestoes,
-                score: respostasCorretas,
-            }),
-        });
+//     try {
+//         const response = await fetch(`http://localhost:3000/simulados/${testId}/finalizar`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'X-API-KEY': localStorage.getItem('apiKey'),
+//             },
+//             body: JSON.stringify({
+//                 attempt_id: attemptId,
+//                 correctAnswers: respostasCorretas,
+//                 totalQuestions: totalQuestoes,
+//                 score: respostasCorretas,
+//             }),
+//         });
 
-        if (!response.ok) {
-            throw new Error('Erro ao finalizar o teste');
-        }
+//         if (!response.ok) {
+//             throw new Error('Erro ao finalizar o teste');
+//         }
 
-        const resultado = await response.json();
+//         const resultado = await response.json();
 
-        // Limpar progresso local
-        localStorage.removeItem('progressoTeste');
-        localStorage.removeItem('attemptId');
-        localStorage.removeItem('idsQuestoes');
+//         // Limpar progresso local
+//         localStorage.removeItem('progressoTeste');
+//         localStorage.removeItem('attemptId');
+//         localStorage.removeItem('idsQuestoes');
 
-        // Exibir resultado
-        exibirResultadoFinal(acerto, respostasCorretas, respostasIncorretas);
-    } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao finalizar o teste. Tente novamente.');
-    }
-}
+//         // Exibir resultado
+//         exibirResultadoFinal(acerto, respostasCorretas, respostasIncorretas);
+//     } catch (error) {
+//         console.error('Erro:', error);
+//         alert('Erro ao finalizar o teste. Tente novamente.');
+//     }
+// }
 
 const resultadoContainer = document.getElementById('resultado-final');
     if (resultadoContainer) {

@@ -100,6 +100,7 @@ document.getElementById('generateQuestionsBtn').addEventListener('click', functi
 const editIcon = document.getElementById('edit-icon-img');
 const imageUpload = document.getElementById('imageUpload');
 const testImage = document.getElementById('testImage');
+const backButton = document.querySelector(".back-button")
 
 editIcon.addEventListener('click', function() {
     imageUpload.click(); 
@@ -121,4 +122,7 @@ imageUpload.addEventListener('change', function(event) {
         alert('Por favor, selecione um arquivo de imagem válido.');
     }
 });
+
+
+
 

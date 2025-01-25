@@ -165,3 +165,4 @@ function configurarBotaoComecar(simuladoId, ultimaQuestaoId) {
         });
     }
 }
+
